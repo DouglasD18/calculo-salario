@@ -31,6 +31,30 @@ public class CalculaSalario {
     return desconto;
   }
 
+  public static double calculaDescontoIR(double salary) {
+    double desconto = 0;
+
+    if (salary > 1903.98) {
+      if (salary <= 2826.65) {
+        desconto += (salary - 1903.99) * 0.075;
+      } else {
+        desconto += (2826.65 - 1903.99) * 0.075;
+        if (salary > 2826.65 && salary <= 3751.05) {
+          desconto += (salary - 2826.66) * 0.15;
+        } else {
+          desconto += (3751.05 - 2826.66) * 0.15;
+          if (salary > 3751.05 && salary <= 4664.68) {
+            desconto += (salary - 3751.06) * 0.225;
+          } else {
+            desconto += ((4664.68 - 3751.06) * 0.225 + (salary - 4664.68) * 0.275);
+          }
+        }
+      }
+    }
+
+    return desconto;
+  }
+
   public static void main(String[] args) {
 
     Scanner scan = new Scanner(System.in);
