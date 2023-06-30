@@ -55,6 +55,13 @@ public class CalculaSalario {
     return desconto;
   }
 
+  public static double calculaSalarioLiquido(double salary) {
+    double descontoINSS = calculaDescontoINSS(salary);
+    double descontoIR = calculaDescontoIR(salary);
+
+    return salary - descontoINSS - descontoIR;
+  }
+
   public static void main(String[] args) {
 
     Scanner scan = new Scanner(System.in);
